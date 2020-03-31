@@ -60,8 +60,7 @@ function Home() {
     <div className="container mt-3 px-0">
 
       <div id="carousel" className="carousel slide tab-content"
-           data-interval="false">
-
+           data-interval="false" data-ride="carousel">
 
         <ul className="nav nav-pills mb-3">
           <li className="nav-item">
