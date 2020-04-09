@@ -10,7 +10,6 @@ import SwipeableViews from "react-swipeable-views";
 import {HomeContent, ContactContent, ProfileContent} from "./data";
 import {useTheme } from '@material-ui/core/styles';
 
-
 function Home() {
   const theme = useTheme();
   const width = {xs:12, sm:12, md:12, lg:10, xl:9};
@@ -24,7 +23,7 @@ function Home() {
     setValue(index);
   };
 
-  function a11yProps(index) {
+  function returnIDforTab(index) {
     return {
       id: `tab${index}`,
       'aria-controls': `tab${index}`,
@@ -35,14 +34,12 @@ function Home() {
     const { children, value, index, ...other } = props;
     return (
       <Typography
-        component="div"
-        role="tabpanel"
-        hidden={value !== index}
-        id={`tab{index}`}
+        component="div" hidden={value !== index}
+        id={`tab${index}`}
         aria-labelledby={`tab${index}`}
         {...other}
       >
-        {value === index && <Box p={3}>{children}</Box>}
+        {value === index && <Box p={2}>{children}</Box>}
       </Typography>
     );
   };
@@ -60,14 +57,14 @@ function Home() {
           <Tabs
             value={value}
             onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorColor="secondary"
+            textColor="secondary"
             variant="fullWidth"
             aria-label="full width tabs example"
           >
-            <Tab label="Home" {...a11yProps(0)} />
-            <Tab label="Profile" {...a11yProps(1)} />
-            <Tab label="Contact" {...a11yProps(2)} />
+            <Tab label="Home" {...returnIDforTab(0)}/>
+            <Tab label="Profile" {...returnIDforTab(1)} />
+            <Tab label="Contact" {...returnIDforTab(2)} />
 
           </Tabs>
         </AppBar>
@@ -78,13 +75,21 @@ function Home() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            {HomeContent}
+            <Box minHeight="60vh" textAlign="justify">
+              {HomeContent}
+            </Box>
           </TabPanel>
+
           <TabPanel value={value} index={1} dir={theme.direction}>
-            {ProfileContent}
+            <Box minHeight="60vh" textAlign="justify">
+              {ProfileContent}
+            </Box>
           </TabPanel>
+
           <TabPanel value={value} index={2} dir={theme.direction}>
-            {ContactContent}
+            <Box minHeight="60vh" textAlign="justify">
+              {ContactContent}
+            </Box>
           </TabPanel>
         </SwipeableViews>
 
