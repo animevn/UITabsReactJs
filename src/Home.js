@@ -54,19 +54,29 @@ function Home() {
     <Grid container direction="row" justify="center">
       <Grid item {...width}>
         <AppBar position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="secondary"
-            textColor="secondary"
-            variant="fullWidth"
-            aria-label="full width tabs example"
-          >
-            <Tab label="Home" {...returnIDforTab(0)}/>
-            <Tab label="Profile" {...returnIDforTab(1)} />
-            <Tab label="Contact" {...returnIDforTab(2)} />
+          <Box display="flex" fexDirection="row" justifyContent="space-between">
+            <Box display="flex" fexDirection="row" alignItems="Center" ml={3}>
+              <Typography component="div" variant="h4">
+                <Box fontWeight="fontWeightBold">
+                  UITabs
+                </Box>
+              </Typography>
+            </Box>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+              variant="fullWidth"
+              aria-label="full width tabs example"
+            >
+              <Tab label="Home" {...returnIDforTab(0)}/>
+              <Tab label="Profile" {...returnIDforTab(1)} />
+              <Tab label="Contact" {...returnIDforTab(2)} />
 
-          </Tabs>
+            </Tabs>
+          </Box>
+
         </AppBar>
 
         <SwipeableViews
@@ -75,19 +85,19 @@ function Home() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Box minHeight="60vh" textAlign="justify">
+            <Box minHeight="80vh" textAlign="justify">
               {HomeContent}
             </Box>
           </TabPanel>
 
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Box minHeight="60vh" textAlign="justify">
+            <Box minHeight="80vh" textAlign="justify">
               {ProfileContent}
             </Box>
           </TabPanel>
 
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <Box minHeight="60vh" textAlign="justify">
+            <Box minHeight="80vh" textAlign="justify">
               {ContactContent}
             </Box>
           </TabPanel>
